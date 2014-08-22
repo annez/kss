@@ -11,13 +11,17 @@ module Kss
     # Public: Returns the filename where this section is found.
     attr_reader :filename
 
+    # Public: Returns the file path where this section is found.
+    attr_reader :filepath
+
     # Public: Initialize a new Section
     #
     # comment_text - The raw comment String, minus any comment syntax.
     # filename     - The filename as a String.
-    def initialize(comment_text=nil, filename=nil)
+    def initialize(comment_text=nil, filepath=nil)
       @raw = comment_text
-      @filename = filename
+      @filepath = filepath
+      @filename = File.basename(filepath)
     end
 
     # Splits up the raw comment text into comment sections that represent
